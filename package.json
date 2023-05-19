@@ -1,0 +1,13 @@
+{
+  "name": "study-all",
+  "version": "1.0.0",
+  "description": "Here is all repos of my study on different topics",
+  "main": "index.js",
+  "scripts": {
+    "node": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Umidjon Sharipov",
+  "license": "ISC",
+  "type": "module"
+}
