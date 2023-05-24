@@ -6,7 +6,7 @@ const myEmitter = new Emitter();
 
 myEmitter.once("foo", ()=>{
     console.log("An event occured 1")
-})
+}) // self delete after executing once
 
 // myEmitter.on("foo", ()=>{
 //     console.log("An event occured 2")

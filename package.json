@@ -8,6 +8,5 @@
     "dev": "nodemon index.js"
   },
   "author": "Umidjon Sharipov",
-  "license": "ISC",
-  "type": "module"
+  "license": "ISC"
 }
