@@ -1,1 +1,1 @@
-create a file temp/new_file.txt
+add to the file ./temp/file.txt this content: Salom dunyo
