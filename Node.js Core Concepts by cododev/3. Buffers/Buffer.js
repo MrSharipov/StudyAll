@@ -1,6 +1,6 @@
 // const buffer = Buffer.alloc(8)
 // buffer.write("umid", "utf-8");
-
+    
 // console.log(buffer) // hexidecimal numbers
 // console.log(buffer.toJSON()) // decimal numbers
 

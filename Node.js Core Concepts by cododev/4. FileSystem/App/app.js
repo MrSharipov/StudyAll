@@ -5,6 +5,10 @@ const fs = require("fs/promises");
 // When we OPEN a file, we must CLOSE it at the end for making memory free
 // Decoder -> 01010101 => hello
 // Encoder -> hello => 01010101
+/*
+Node Promise API -> try/catch
+Node Callback API -> callback (err)=>{clg(err)}
+*/
 
 (async ()=>{
 

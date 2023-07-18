@@ -80,3 +80,109 @@ sleep(100).then(()=>{
 */
 
 //************* - 3 - ***************
+
+/*
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+
+*/
+
+
+
+// let s = "()[]{}";
+// let s = "(]";
+// let s = "()";
+let s = "{[]}"
+
+var isValid = function(s) {
+
+    if (s.length === 0) {
+        return false;
+    }
+
+    let stack = [];
+    const brackets = {
+        '(': ')',
+        '[': ']',
+        '{': '}',
+    }
+
+
+    if (!brackets[s[0]]) {
+        return false;
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        
+        if(brackets[s[i]]) { // opening bracket
+
+            console.log("brackets[s[i]]: " + brackets[s[i]])
+            console.log("s[i]: " + s[i])
+
+            stack.push(s[i]);
+        }
+        else if (brackets[stack[stack.length - 1]] === s[i]) { // closing bracket & matching brackets
+            console.log("stack[stack.length - 1]: " + stack[stack.length - 1])
+            console.log("brackets[stack[stack.length - 1]]: " + brackets[stack[stack.length - 1]]);
+            console.log("s[i]: " + s[i])
+
+            stack.pop();
+        }
+        else {
+            return false;
+        }
+    }
+
+    return stack.length === 0;
+
+    //************* Following code is not for all cases ****************
+
+    // let elements = s.split('');
+
+    // if(elements.length % 2 !== 0) {
+    //     return false
+    // }
+
+    // let res;
+    // for (let i = 0; i < elements.length; i += 2) {
+    //     console.log(elements[i])
+    //     switch(elements[i]){
+    //         case "(" :
+    //             console.log("1")
+    //             res = elements[i+1] === ")";
+    //             console.log("res: "  + res)
+    //             break;
+    //         case "{" :
+    //             console.log("2")
+    //             res = elements[i+1] === "}";
+    //             console.log("res: "  + res)
+    //             break;
+    //         case "[" :
+    //             console.log("3")
+    //             res = elements[i+1] === "]";
+    //             console.log("res: "  + res)
+    //             break;
+    //     }
+    // }
+    // return res;
+};
+
+console.log(isValid(s));
