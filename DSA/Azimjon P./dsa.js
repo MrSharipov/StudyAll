@@ -55,65 +55,118 @@ https://www.youtube.com/watch?v=mesu75PTDC8&ab_channel=ProgrammingwithMosh
 
 */
 
-const n = 7102;
+// const n = 7102;
 
-function reverseDigitsLog(num) {
-  if (num === 0) {
-    console.log(num);
-    return;
-  }
+// function reverseDigitsLog(num) {
+//   if (num === 0) {
+//     console.log(num);
+//     return;
+//   }
 
-  while (num !== 0) {
-    let digit = num % 10;
-    console.log(digit);
-    num = Math.floor(num / 10);
-  }
-}
+//   while (num !== 0) {
+//     let digit = num % 10;
+//     console.log(digit);
+//     num = Math.floor(num / 10);
+//   }
+// }
 
-function reverseDigit(num) {
-  let res = 0;
-  while (num != 0) {
-    res *= 10; // 0, 70
-    let digit = num % 10; // 7, 1
-    console.log("digit: " + digit);
-    res += digit; // 7
-    console.log("res: " + res);
-    num = Math.floor(num / 10); // 1
-    console.log("num: " + num);
-  }
+// function reverseDigit(num) {
+//   let res = 0;
+//   while (num != 0) {
+//     res *= 10; // 0, 70
+//     let digit = num % 10; // 7, 1
+//     console.log("digit: " + digit);
+//     res += digit; // 7
+//     console.log("res: " + res);
+//     num = Math.floor(num / 10); // 1
+//     console.log("num: " + num);
+//   }
 
-  console.log(res);
-}
+//   console.log(res);
+// }
 
 // reverseDigit(17);
 // reverseDigitLog(n);
 
 // 2lik sanoq tizimiga o'tkazish
-let res = "";
-function convertToBinary(num) {
-  while (num !== 0) {
-    let digit = num % 2;
-    res += digit;
-    num = Math.floor(num / 2);
-  }
-  const result = res.split("").reverse().join("");
-  console.log(result);
-}
+// let res = "";
+// function convertToBinary(num) {
+//   while (num !== 0) {
+//     let digit = num % 2;
+//     res += digit;
+//     num = Math.floor(num / 2);
+//   }
+//   const result = res.split("").reverse().join("");
+//   console.log(result);
+// }
 
 // convertToBinary(2)
 
-function is_power_of_two(num) {
-  let bitCount = 0;
+// function is_power_of_two(num) {
+//   let bitCount = 0;
 
-  while (num !== 0) {
-    bitCount += num & 1;
-    console.log({ bitCount });
-    num = num >> 1;
+//   while (num !== 0) {
+//     bitCount += num & 1;
+//     console.log({ bitCount });
+//     num = num >> 1;
+//   }
+
+//   return bitCount === 1;
+// }
+
+// let result = is_power_of_two(3);
+
+// console.log(result);
+
+// function isPalindrom(word) {
+//   //O(n/2) - vaqt; O(1) - xotira
+//   let low = 0;
+//   let high = word.length - 1;
+
+//   while (low < high) {
+//     if (word[low] != word[high]) {
+//       return false;
+//     }
+//     low += 1;
+//     high -= 1;
+//   }
+//   return true;
+// }
+
+// console.log(isPalindrom("ana"));
+
+// Merge two arrays
+const arr1 = [1, 3, 4];
+const arr2 = [2, 5, 6];
+
+//USE also Genator yield
+
+function merge_two_arrays(arr_1, arr_2) {
+  let i = 0;
+  let j = 0;
+  const res = [];
+  const n = arr1.length;
+  const m = arr2.length;
+
+  while (i < n && j < m) {
+    if (arr1[i] < arr2[j]) {
+      res.push(arr1[i]);
+      i += 1;
+    } else {
+      res.push(arr2[j]);
+      j += 1;
+    }
+  }
+  while (i < n) {
+    res.push(arr1[i]);
+    i += 1;
   }
 
-  return bitCount === 1;
+  while (j < m) {
+    res.push(arr2[j]);
+    j += 1;
+  }
+  return res;
 }
 
-let result = is_power_of_two(3);
-
-console.log(result);
+console.log(merge_two_arrays(arr1, arr2));

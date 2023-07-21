@@ -55,3 +55,11 @@ $ ifconfig - cmd to see IP data in Pc
           (diagram module in nodejs)
 
 */
+
+/*
+    Info about ports and their usage
+
+    https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml  
+
+
+*/
