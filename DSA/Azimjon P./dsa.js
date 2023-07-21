@@ -57,46 +57,63 @@ https://www.youtube.com/watch?v=mesu75PTDC8&ab_channel=ProgrammingwithMosh
 
 const n = 7102;
 
-function reverseDigitLog (num) {
-        if(num === 0) {
-                console.log(num)
-                return;
-        }
+function reverseDigitsLog(num) {
+  if (num === 0) {
+    console.log(num);
+    return;
+  }
 
-        while(num !== 0){
-                let digit = num % 10;
-                console.log(digit);
-                num = Math.floor(num / 10)
-        }
+  while (num !== 0) {
+    let digit = num % 10;
+    console.log(digit);
+    num = Math.floor(num / 10);
+  }
 }
 
-function reverseDigit (num) {
-        let res = 0;
-        while(num != 0){
-                res *= 10; // 0, 70
-                let digit = num % 10; // 7, 1
-                console.log("digit: " + digit)
-                res += digit; // 7
-                console.log("res: " + res)
-                num = Math.floor(num / 10); // 1 
-                console.log("num: " + num)
-        }
+function reverseDigit(num) {
+  let res = 0;
+  while (num != 0) {
+    res *= 10; // 0, 70
+    let digit = num % 10; // 7, 1
+    console.log("digit: " + digit);
+    res += digit; // 7
+    console.log("res: " + res);
+    num = Math.floor(num / 10); // 1
+    console.log("num: " + num);
+  }
 
-        console.log(res)
+  console.log(res);
 }
 
 // reverseDigit(17);
 // reverseDigitLog(n);
 
-let res = '';
-function convertToBinary (num) {
-        while(num !== 0){
-                let digit = num % 2;
-                res += digit;
-                num = Math.floor(num / 2);
-        }
-        const result = res.split('').reverse().join("");
-        console.log(result);
+// 2lik sanoq tizimiga o'tkazish
+let res = "";
+function convertToBinary(num) {
+  while (num !== 0) {
+    let digit = num % 2;
+    res += digit;
+    num = Math.floor(num / 2);
+  }
+  const result = res.split("").reverse().join("");
+  console.log(result);
 }
 
-convertToBinary(2)
+// convertToBinary(2)
+
+function is_power_of_two(num) {
+  let bitCount = 0;
+
+  while (num !== 0) {
+    bitCount += num & 1;
+    console.log({ bitCount });
+    num = num >> 1;
+  }
+
+  return bitCount === 1;
+}
+
+let result = is_power_of_two(3);
+
+console.log(result);

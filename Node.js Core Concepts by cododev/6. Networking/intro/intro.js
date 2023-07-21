@@ -17,21 +17,41 @@ $ ifconfig - cmd to see IP data in Pc
     - Router: 192.168.122.91
 */
 
-const http = require("http");
+/*
+    ------- Connect to Ipad -------
+*/
+// const http = require("http");
 
-const port = 3002;
-// const hostname = "127.0.0.1";
-const hostname = "192.168.122.213";
+// const port = 3002;
+// // const hostname = "127.0.0.1";
+// const hostname = "192.168.122.213";
 
-const server = http.createServer((req,res)=>{
-    const data  = {message: "Hi dunya!"};
+// const server = http.createServer((req, res) => {
+//   const data = { message: "Hi dunya!" };
 
-    res.setHeader("Content-type", "application/json");
-    res.setHeader("Connection", "close");
-    res.statusCode = 200;
-    res.end(JSON.stringify(data));
-});
+//   res.setHeader("Content-type", "application/json");
+//   res.setHeader("Connection", "close");
+//   res.statusCode = 200;
+//   res.end(JSON.stringify(data));
+// });
 
-server.listen(port, hostname, ()=> {
-    console.log(`Server is running on: http://${hostname}:${port}`);
-})
+// server.listen(port, hostname, () => {
+//   console.log(`Server is running on: http://${hostname}:${port}`);
+// });
+
+/*
+    ------- Network layers -------
+
+    TCP - UDP (Transport Layer) -> ports
+    Network layer -> IP addresses
+    Data Link Layer -> pocket
+    Physical Layer -> cabels
+
+
+    TCP - checks whether data sent over till last bit or not        low speed
+          (net, http, https modules in nodejs)
+
+    UDP - just send data not worrying about result (audio, video streaming)                                                      high speed
+          (diagram module in nodejs)
+
+*/
