@@ -6,22 +6,6 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// const clearLine = (dir) => {
-//   return new Promise((resolve, reject) => {
-//     process.stdout.clearLine(dir, () => {
-//       resolve();
-//     });
-//   });
-// };
-
-// const moveCursor = (dx, dy) => {
-//   return new Promise((resolve, reject) => {
-//     process.stdout.moveCursor(dx, dy, () => {
-//       resolve();
-//     });
-//   });
-// };
-
 const clearLine = (dir) => {
   return new Promise((resolve, reject) => {
     process.stdout.clearLine(dir, () => {
@@ -38,6 +22,7 @@ const moveCursor = (dx, dy) => {
   });
 };
 
+let id;
 const socket = net.createConnection(
   { host: "127.0.0.1", port: 3008 },
   async () => {
@@ -51,7 +36,7 @@ const socket = net.createConnection(
       // clear all in current cursor
       await clearLine(0);
 
-      socket.write(message);
+      socket.write(`${id}-message-${message}`);
     };
 
     socket.on("data", async (data) => {
@@ -59,7 +44,18 @@ const socket = net.createConnection(
       await moveCursor(0, -1);
       // clear all in current cursor
       await clearLine(0);
-      console.log(data.toString("utf-8"));
+
+      if (data.toString("utf-8").substring(0, 2) === "id") {
+        // When we are getting id
+
+        //everything from the third character up till the end
+        id = data.toString("utf-8").substring(3);
+        console.log(`Your id is: ${id}`);
+      } else {
+        // When we are getting message
+        console.log(data.toString("utf-8"));
+      }
+
       ask();
     });
 
