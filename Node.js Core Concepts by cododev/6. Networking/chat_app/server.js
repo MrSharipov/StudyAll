@@ -10,6 +10,9 @@ const server = net.createServer();
 
 const clients = [];
 
+const PORT = 4020;
+const HOST = "172.31.12.98";
+
 server.on("connection", (socket) => {
   console.log("New connection to the server");
 
@@ -40,6 +43,6 @@ server.on("connection", (socket) => {
   clients.push({ id: clientId.toString(), socket });
 });
 
-server.listen(3008, "127.0.0.1", () => {
+server.listen(PORT, HOST, () => {
   console.log("Opened server on ", server.address());
 });

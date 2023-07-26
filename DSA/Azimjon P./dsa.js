@@ -169,4 +169,38 @@ function merge_two_arrays(arr_1, arr_2) {
   return res;
 }
 
-console.log(merge_two_arrays(arr1, arr2));
+// console.log(merge_two_arrays(arr1, arr2));
+
+/*
+O(n) => Big O notation
+
+const arr = [10,20,21,9,10];
+const lenght = arr.length;
+const n = length;    --------> O(n) => (n is length of input data);
+
+1. O(n) -> (birga bir :)
+2. O(1) -> constant time (srazu :)
+
+// -- O(n) --
+for(let i = 0; i < arr.length; i++) {
+  clg(i)  
+}
+
+// -- O(n) --
+let arrOne = [21,43,2,3,41];
+let arrTwo = [];
+for(let i = 0; i < arrOne.length; i++){
+  arrTwo[i] = arrOne[i]
+}
+
+*/
+
+/*
+      Linked List
+
+*/
+
+/*
+      Hash Map (Hash table, Dict)
+
+*/
