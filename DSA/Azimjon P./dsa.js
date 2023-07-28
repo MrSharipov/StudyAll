@@ -200,7 +200,99 @@ for(let i = 0; i < arrOne.length; i++){
 
 */
 
-/*
-      Hash Map (Hash table, Dict)
+/*Hash Map (Hash table, Dict) */
+// O(n)
+function anagrams(stringA, stringB) {
+  /*First, we remove any non-alphabet character using regex and convert
+        convert the strings to lowercase. */
+  stringA = stringA.replace(/[^\w]/g, "").toLowerCase();
+  stringB = stringB.replace(/[^\w]/g, "").toLowerCase();
 
+  //Get the character map of both strings
+  const charMapA = getCharMap(stringA);
+  const charMapB = getCharMap(stringB);
+  console.log({ charMapA, charMapB });
+  /* Next, we loop through each character in the charMapA, 
+        and check if it exists in charMapB and has the same value as
+        in charMapA. If it does not, return false */
+  for (let char in charMapA) {
+    console.log({ char });
+    if (charMapA[char] !== charMapB[char]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getCharMap(string) {
+  // We define an empty object that will hold the key - value pairs.
+  let charMap = {};
+
+  /*We loop through each character in the string. if the character 
+        already exists in the map, increase the value, otherwise add it 
+        to the map with a value of 1 */
+  for (let char of string) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+}
+
+// console.log(anagrams("anorr", "ranord"));
+
+// 2-method
+// O(nlogn)
+function anagrams(stringA, stringB) {
+  /*First, we remove any non-alphabet character using regex and convert       
+  convert the strings to lowercase. */
+  stringA = stringA.replace(/[^\w]/g, "").toLowerCase();
+  stringB = stringB.replace(/[^\w]/g, "").toLowerCase();
+
+  return sortString(stringA) === sortString(stringB);
+}
+
+/*This function sorts the strings*/
+function sortString(string) {
+  return string.split("").sort().join("");
+}
+
+//Map should have unique keys
+// O(n);
+function two_sum(arr, target) {
+  let complements = new Map();
+
+  arr.forEach((element, index) => {
+    complements.set(target - element, index);
+  });
+
+  console.log({ arr, complements });
+  for (let i = 0; i < arr.length; i++) {
+    if (complements.get(arr[i]) && complements.get(arr[i]) != i) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// let res = two_sum([2, 3, 1, 4, 7], 8);
+// console.log(res);
+
+/*
+    Stack & Queue
+    ADS -> Abstract data structure
+
+    Queue (FIFO -> First in, first out)
+      - enque => navbatga kiritish (required)
+      - deque => navbatdan chiqarish (required)
+      - isEmpty => (required)
+      - size  => (optional)
+        Use linkedList with to pointer:
+          1. for enque
+          2. for deque
+
+    Stack (Last in, first out)
+      - push => take and return element (required)
+      - pop => return element (required)
+      - isEmpty => return boolean (required)
+      - size => return int (optional)
 */

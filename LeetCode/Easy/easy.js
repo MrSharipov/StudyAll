@@ -1,4 +1,3 @@
-
 //************* - 1 - ***************
 
 /*
@@ -105,84 +104,90 @@ Output: false
 
 */
 
-
-
 // let s = "()[]{}";
 // let s = "(]";
 // let s = "()";
-let s = "{[]}"
+let s = "{[]}";
 
-var isValid = function(s) {
+var isValid = function (s) {
+  if (s.length === 0) {
+    return false;
+  }
 
-    if (s.length === 0) {
-        return false;
+  let stack = [];
+  const brackets = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+
+  if (!brackets[s[0]]) {
+    return false;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    if (brackets[s[i]]) {
+      // opening bracket
+
+      console.log("brackets[s[i]]: " + brackets[s[i]]);
+      console.log("s[i]: " + s[i]);
+
+      stack.push(s[i]);
+    } else if (brackets[stack[stack.length - 1]] === s[i]) {
+      // closing bracket & matching brackets
+      console.log("stack[stack.length - 1]: " + stack[stack.length - 1]);
+      console.log(
+        "brackets[stack[stack.length - 1]]: " +
+          brackets[stack[stack.length - 1]]
+      );
+      console.log("s[i]: " + s[i]);
+
+      stack.pop();
+    } else {
+      return false;
     }
+  }
 
-    let stack = [];
-    const brackets = {
-        '(': ')',
-        '[': ']',
-        '{': '}',
-    }
+  return stack.length === 0;
 
+  //************* Following code is not for all cases ****************
 
-    if (!brackets[s[0]]) {
-        return false;
-    }
+  // let elements = s.split('');
 
-    for (let i = 0; i < s.length; i++) {
-        
-        if(brackets[s[i]]) { // opening bracket
+  // if(elements.length % 2 !== 0) {
+  //     return false
+  // }
 
-            console.log("brackets[s[i]]: " + brackets[s[i]])
-            console.log("s[i]: " + s[i])
-
-            stack.push(s[i]);
-        }
-        else if (brackets[stack[stack.length - 1]] === s[i]) { // closing bracket & matching brackets
-            console.log("stack[stack.length - 1]: " + stack[stack.length - 1])
-            console.log("brackets[stack[stack.length - 1]]: " + brackets[stack[stack.length - 1]]);
-            console.log("s[i]: " + s[i])
-
-            stack.pop();
-        }
-        else {
-            return false;
-        }
-    }
-
-    return stack.length === 0;
-
-    //************* Following code is not for all cases ****************
-
-    // let elements = s.split('');
-
-    // if(elements.length % 2 !== 0) {
-    //     return false
-    // }
-
-    // let res;
-    // for (let i = 0; i < elements.length; i += 2) {
-    //     console.log(elements[i])
-    //     switch(elements[i]){
-    //         case "(" :
-    //             console.log("1")
-    //             res = elements[i+1] === ")";
-    //             console.log("res: "  + res)
-    //             break;
-    //         case "{" :
-    //             console.log("2")
-    //             res = elements[i+1] === "}";
-    //             console.log("res: "  + res)
-    //             break;
-    //         case "[" :
-    //             console.log("3")
-    //             res = elements[i+1] === "]";
-    //             console.log("res: "  + res)
-    //             break;
-    //     }
-    // }
-    // return res;
+  // let res;
+  // for (let i = 0; i < elements.length; i += 2) {
+  //     console.log(elements[i])
+  //     switch(elements[i]){
+  //         case "(" :
+  //             console.log("1")
+  //             res = elements[i+1] === ")";
+  //             console.log("res: "  + res)
+  //             break;
+  //         case "{" :
+  //             console.log("2")
+  //             res = elements[i+1] === "}";
+  //             console.log("res: "  + res)
+  //             break;
+  //         case "[" :
+  //             console.log("3")
+  //             res = elements[i+1] === "]";
+  //             console.log("res: "  + res)
+  //             break;
+  //     }
+  // }
+  // return res;
 };
 
-console.log(isValid(s));
+// console.log(isValid(s));
+
+// var addTwoPromises = async function (promise1, promise2) {
+//   console.log(
+//     (await promise1.then((val) => val)) + (await promise2.then((val) => val))
+//   );
+// };
+
+// addTwoPromises(Promise.resolve(2), Promise.resolve(2)).then(console.log()); // 4
